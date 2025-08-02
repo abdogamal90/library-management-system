@@ -76,10 +76,40 @@ const deleteBorrowerService = (id) => {
     });
   });
 };
+
+const searchBorrowersService = (searchParams) => {
+  return new Promise((resolve, reject) => {
+    const { name } = searchParams;
+    let query = 'SELECT * FROM borrowers WHERE';
+    const params = [];
+    let conditions = [];
+
+    if (name) {
+      conditions.push('name ILIKE $1');
+      params.push(`%${name}%`);
+    }
+
+    if (conditions.length === 0) {
+      reject(new Error('At least one search parameter is required'));
+      return;
+    }
+
+    query += ' ' + conditions.join(' AND ');
+
+    pool.query(query, params, (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results.rows);
+      }
+    });
+  });
+}
 module.exports = {
   getAllBorrowersService,
   createBorrowerService,
   getBorrowerByIdService,
   updateBorrowerService,
+  searchBorrowersService,
   deleteBorrowerService
 };

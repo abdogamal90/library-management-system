@@ -16,24 +16,6 @@ const getAllBooks = async (req, res) => {
   }
 };
 
-const getBookById = async (req, res) => {
-  try {
-    const bookId = parseInt(req.params.id);
-    if (isNaN(bookId)) {
-      return res.status(400).json({ error: 'Invalid book ID' });
-    }
-    
-    const book = await getBookByIdService(bookId);
-    if (!book) {
-      return res.status(404).json({ error: 'Book not found' });
-    }
-    
-    res.status(200).json(book);
-  } catch (error) {
-    res.status(500).json({ error: 'Database query failed', details: error.message });
-  }
-};
-
 const createBook = async (req, res) => {
   try {
     if (!req.body || Object.keys(req.body).length === 0) {
@@ -107,7 +89,6 @@ const searchBooks = async (req, res) => {
 
 module.exports = {
   getAllBooks,
-  getBookById,
   createBook,
   updateBook,
   deleteBook,

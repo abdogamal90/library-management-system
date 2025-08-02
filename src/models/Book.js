@@ -26,18 +26,6 @@ const getAllBooksService = () => {
   });
 };
 
-const getBookByIdService = (id) => {
-  return new Promise((resolve, reject) => {
-    pool.query('SELECT * FROM books WHERE id = $1', [id], (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(results.rows[0]);
-      }
-    });
-  });
-};
-
 const createBookService = (bookData) => {
   return new Promise((resolve, reject) => {
     const { title, author, isbn, available_quantity, shelf_location } = bookData;
@@ -121,7 +109,6 @@ const searchBooksService = (searchParams) => {
 
 module.exports = {
   getAllBooksService,
-  getBookByIdService,
   createBookService,
   updateBookService,
   deleteBookService,
