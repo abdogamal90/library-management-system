@@ -77,32 +77,37 @@ Base URL: http://localhost:3000
 
 🧪 Example Request Payloads
 Register a Borrower
-POST /borrowers
-{
-  "name": "John Doe",
-  "email": "john@example.com"
-}
+   ```bash
+   POST /borrowers
+   {
+     "name": "John Doe",
+     "email": "john@example.com"
+   }
+```
 
 Add a Book
 
 POST /books
-{
-  "title": "Clean Code",
-  "author": "Robert C. Martin",
-  "published_date": "2008-08-11",
-  "isbn": "9780132350884",
-  "available_quantity": 3
-}
+   ```bash
+   {
+     "title": "Clean Code",
+     "author": "Robert C. Martin",
+     "published_date": "2008-08-11",
+     "isbn": "9780132350884",
+     "available_quantity": 3
+   }
+   ```
 
 Borrow a Book
 
 POST /borrow
-{
-  "borrower_id": 1,
-  "book_id": 2,
-  "due_date": "2025-08-10"
-}
-
+   ```bash
+   {
+     "borrower_id": 1,
+     "book_id": 2,
+     "due_date": "2025-08-10"
+   }
+```
 💡 Performance Consideration
 The system is optimized for read-heavy operations, such as listing and searching for books or borrowers. Indexes on frequently queried columns (like book_id, borrower_id) are recommended to maintain performance as data grows.
 
