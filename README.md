@@ -15,7 +15,7 @@ A lightweight backend API for managing a library's books, borrowers, and borrowi
 ---
 
 ## ERD
-![ER Diagram](./er-diagram.png)
+![ER Diagram](./library_schema_diagram.png)
 
 ---
 
