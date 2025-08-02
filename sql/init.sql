@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS borrowers (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  registered_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS books (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  published_date DATE,
+  isbn VARCHAR(20) UNIQUE,
+  available_quantity INT DEFAULT 0
+);

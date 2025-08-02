@@ -31,4 +31,18 @@ pool.connect()
 //     .then(() => console.log('Books table created or already exists'))
 //     .catch(err => console.error('Error creating books table', err.stack));
 // };
+
+createBorrowerTable = () => {
+  const query = `
+    CREATE TABLE IF NOT EXISTS borrowers (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      registered_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `;
+
+  pool.query(query)
+    .then(() => console.log('Borrowers table created or already exists'))
+    .catch(err => console.error('Error creating borrowers table', err.stack));
+}
 module.exports = pool;
