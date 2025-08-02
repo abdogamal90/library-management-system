@@ -14,6 +14,11 @@ A lightweight backend API for managing a library's books, borrowers, and borrowi
 
 ---
 
+## ERD
+![ER Diagram](./er-diagram.png)
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Backend**: Node.js + Express  
